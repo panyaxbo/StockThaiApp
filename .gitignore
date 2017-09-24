@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-
+.vscode
 # dependencies
 /node_modules
 
@@ -40,3 +40,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Build installer
+/stockthai-darwin-x64
