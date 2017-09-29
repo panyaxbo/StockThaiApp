@@ -1,3 +1,169 @@
-<p>
-  news works!
-</p>
+<nav>
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a [routerLink]="['/main']" class="breadcrumb"><i class="material-icons">home</i> Home</a>
+            <a class="breadcrumb"> News</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="nav-wrapper">
+        <div class="col s12">
+            <a [routerLink]="['/main']" class="breadcrumb"><i class="material-icons">home</i> Home</a>
+            <a class="breadcrumb"> News</a>
+        </div>
+    </div>
+    <h3>Business</h3>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select class="icons">
+              <option  *ngFor="let businessOption of business_sources" value="businessOption.SourceCode"
+              data-icon="businessOption.SourceImageURL" class="left circle"> {{businessOption.SourceName}}</option>
+            </select>
+            <label>Images in select</label>
+        </div>
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='businessDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='businessDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div *ngIf="!IsLoadBusinessFinished" class="spinner"></div>
+    <div *ngIf="IsLoadBusinessFinished && business_articles === 'undefined'">
+        <h5 class="center-align">No Data</h5>
+    </div>
+    <div *ngIf="business_articles !== 'undefined' && IsLoadBusinessFinished" class="row">
+        <div class="col s6" *ngFor="let business_article of business_articles">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{business_article.urlToImage}}">
+                    <span class="card-title">{{business_article.title}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{business_article.description}}</p>
+                    <br>
+                    <p>{{business_article.author}} </p>
+                    <small class="text-muted">{{business_article.publishedAt | amTimeAgo}}</small>
+                </div>
+                <div class="card-action">
+                    <a href="{{business_article.url}}"><i class="fa fa-share" aria-hidden="true"></i> See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <!-- End Business -->
+    <h3>Entertainment</h3>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select class="icons">
+              <option  *ngFor="let entertainmentOption of entertainment_sources" value="entertainmentOption.SourceCode"
+              data-icon="entertainmentOption.SourceImageURL" class="left circle">{{entertainmentOption.SourceName}}</option>
+            </select>
+            <label>Images in select</label>
+        </div>
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='entertainmentDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='entertainmentDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <!-- End Entertainment -->
+    <h3>Gaming</h3>
+    <div class="row">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='gamingDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='gamingDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <h3>General</h3>
+    <div class="row">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='generalDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='generalDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <h3>Music</h3>
+    <div class="row">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='musicDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='musicDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <h3>Science and Nature</h3>
+    <div class="row">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' data-activates='scienceDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='scienceDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <h3>Sport</h3>
+    <div class="row">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='sportDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='sportDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div class="divider"></div>
+    <h3>Technology</h3>
+    <div class="row">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' href='#' data-activates='techDropdown'>Sort By</a>
+        <!-- Dropdown Structure -->
+        <ul id='techDropdown' class='dropdown-content'>
+            <li><i class="material-icons">vertical_align_top</i> Top</li>
+            <li><i class="material-icons">fiber_new</i> Latest</li>
+            <li><i class="material-icons">star_border</i> Popular</li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col s6" *ngFor="let tech_article of tech_articles">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{tech_article.urlToImage}}">
+                    <span class="card-title">{{tech_article.title}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{tech_article.description}}</p>
+                    <br>
+                    <p>{{tech_article.author}} </p>
+                    <small class="text-muted">{{tech_article.publishedAt | amTimeAgo}}</small>
+                </div>
+                <div class="card-action">
+                    <a href="{{tech_article.url}}"><i class="fa fa-share" aria-hidden="true"></i> See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
