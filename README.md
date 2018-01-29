@@ -1,3 +1,17 @@
+# Stock Thai App by Electron
+
+<p align="center">
+  <img src="/example/stockthai-app-1.png">
+</p>
+
+<p align="center">
+  <img src="/example/stockthai-app-2.png">
+</p>
+
+<p align="center">
+  <img src="/example/stockthai-app-3.png">
+</p>
+
 # Angular2Electron
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.

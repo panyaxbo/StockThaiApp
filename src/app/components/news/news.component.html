@@ -63,7 +63,7 @@
               <option  *ngFor="let entertainmentOption of entertainment_sources" value="entertainmentOption.SourceCode"
               data-icon="entertainmentOption.SourceImageURL" class="left circle">{{entertainmentOption.SourceName}}</option>
             </select>
-            <label>Images in select</label>
+            <label>Select Entertainment News</label>
         </div>
         <!-- Dropdown Trigger -->
         <a class='dropdown-button btn' href='#' data-activates='entertainmentDropdown'>Sort By</a>
@@ -74,10 +74,40 @@
             <li><i class="material-icons">star_border</i> Popular</li>
         </ul>
     </div>
+    <div *ngIf="!IsLoadEntertainmentFinished" class="spinner"></div>
+    <div *ngIf="IsLoadEntertainmentFinished && entertainment_articles === 'undefined'">
+        <h5 class="center-align">No Data</h5>
+    </div>
+    <div *ngIf="entertainment_articles !== 'undefined' && IsLoadEntertainmentFinished" class="row">
+        <div class="col s6" *ngFor="let entertainment_article of entertainment_articles">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{entertainment_article.urlToImage}}">
+                    <span class="card-title">{{entertainment_article.title}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{entertainment_article.description}}</p>
+                    <br>
+                    <p>{{entertainment_article.author}} </p>
+                    <small class="text-muted">{{entertainment_article.publishedAt | amTimeAgo}}</small>
+                </div>
+                <div class="card-action">
+                    <a href="{{entertainment_article.url}}"><i class="fa fa-share" aria-hidden="true"></i> See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="divider"></div>
     <!-- End Entertainment -->
     <h3>Gaming</h3>
     <div class="row">
+        <div class="input-field col s12 m6">
+            <select class="icons">
+              <option  *ngFor="let entertainmentOption of game_sources" value="entertainmentOption.SourceCode"
+              data-icon="entertainmentOption.SourceImageURL" class="left circle">{{entertainmentOption.SourceName}}</option>
+            </select>
+            <label>Select Gaming News</label>
+        </div>
         <!-- Dropdown Trigger -->
         <a class='dropdown-button btn' href='#' data-activates='gamingDropdown'>Sort By</a>
         <!-- Dropdown Structure -->
@@ -87,9 +117,39 @@
             <li><i class="material-icons">star_border</i> Popular</li>
         </ul>
     </div>
+    <div *ngIf="!IsLoadGameFinished" class="spinner"></div>
+    <div *ngIf="IsLoadGameFinished && game_articles === 'undefined'">
+        <h5 class="center-align">No Data</h5>
+    </div>
+    <div *ngIf="game_articles !== 'undefined' && IsLoadGameFinished" class="row">
+        <div class="col s6" *ngFor="let game_article of game_articles">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{game_article.urlToImage}}">
+                    <span class="card-title">{{game_article.title}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{game_article.description}}</p>
+                    <br>
+                    <p>{{game_article.author}} </p>
+                    <small class="text-muted">{{game_article.publishedAt | amTimeAgo}}</small>
+                </div>
+                <div class="card-action">
+                    <a href="{{game_article.url}}"><i class="fa fa-share" aria-hidden="true"></i> See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="divider"></div>
     <h3>General</h3>
     <div class="row">
+        <div class="input-field col s12 m6">
+            <select class="icons">
+              <option  *ngFor="let generalOption of general_sources" value="generalOption.SourceCode"
+              data-icon="generalOption.SourceImageURL" class="left circle">{{generalOption.SourceName}}</option>
+            </select>
+            <label>Select General News</label>
+        </div>
         <!-- Dropdown Trigger -->
         <a class='dropdown-button btn' href='#' data-activates='generalDropdown'>Sort By</a>
         <!-- Dropdown Structure -->
@@ -99,9 +159,39 @@
             <li><i class="material-icons">star_border</i> Popular</li>
         </ul>
     </div>
+    <div *ngIf="!IsLoadGeneralFinished" class="spinner"></div>
+    <div *ngIf="IsLoadGeneralFinished && general_articles === 'undefined'">
+        <h5 class="center-align">No Data</h5>
+    </div>
+    <div *ngIf="general_articles !== 'undefined' && IsLoadGeneralFinished" class="row">
+        <div class="col s6" *ngFor="let general_article of general_articles">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{general_article.urlToImage}}">
+                    <span class="card-title">{{general_article.title}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{general_article.description}}</p>
+                    <br>
+                    <p>{{general_article.author}} </p>
+                    <small class="text-muted">{{general_article.publishedAt | amTimeAgo}}</small>
+                </div>
+                <div class="card-action">
+                    <a href="{{general_article.url}}"><i class="fa fa-share" aria-hidden="true"></i> See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="divider"></div>
     <h3>Music</h3>
     <div class="row">
+        <div class="input-field col s12 m6">
+            <select class="icons">
+              <option  *ngFor="let musicOption of music_sources" value="musicOption.SourceCode"
+              data-icon="musicOption.SourceImageURL" class="left circle">{{musicOption.SourceName}}</option>
+            </select>
+            <label>Select Music News</label>
+        </div>
         <!-- Dropdown Trigger -->
         <a class='dropdown-button btn' href='#' data-activates='musicDropdown'>Sort By</a>
         <!-- Dropdown Structure -->
@@ -111,9 +201,39 @@
             <li><i class="material-icons">star_border</i> Popular</li>
         </ul>
     </div>
+    <div *ngIf="!IsLoadMusicFinished" class="spinner"></div>
+    <div *ngIf="IsLoadMusicFinished && music_articles === 'undefined'">
+        <h5 class="center-align">No Music Data</h5>
+    </div>
+    <div *ngIf="music_articles !== 'undefined' && IsLoadMusicFinished" class="row">
+        <div class="col s6" *ngFor="let music_article of music_articles">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{music_article.urlToImage}}">
+                    <span class="card-title">{{music_article.title}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{music_article.description}}</p>
+                    <br>
+                    <p>{{music_article.author}} </p>
+                    <small class="text-muted">{{music_article.publishedAt | amTimeAgo}}</small>
+                </div>
+                <div class="card-action">
+                    <a href="{{music_article.url}}"><i class="fa fa-share" aria-hidden="true"></i> See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="divider"></div>
     <h3>Science and Nature</h3>
     <div class="row">
+        <div class="input-field col s12 m6">
+            <select class="icons">
+              <option  *ngFor="let scienceOption of science_sources" value="scienceOption.SourceCode"
+              data-icon="scienceOption.SourceImageURL" class="left circle">{{scienceOption.SourceName}}</option>
+            </select>
+            <label>Select Science and Nature News</label>
+        </div>
         <!-- Dropdown Trigger -->
         <a class='dropdown-button btn' data-activates='scienceDropdown'>Sort By</a>
         <!-- Dropdown Structure -->
@@ -123,9 +243,39 @@
             <li><i class="material-icons">star_border</i> Popular</li>
         </ul>
     </div>
+    <div *ngIf="!IsLoadScienceFinished" class="spinner"></div>
+    <div *ngIf="IsLoadScienceFinished && science_articles === 'undefined'">
+        <h5 class="center-align">No Science and Nature Data</h5>
+    </div>
+    <div *ngIf="science_articles !== 'undefined' && IsLoadMusicFinished" class="row">
+        <div class="col s6" *ngFor="let science_article of science_articles">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{science_article.urlToImage}}">
+                    <span class="card-title">{{science_article.title}}</span>
+                </div>
+                <div class="card-content">
+                    <p>{{science_article.description}}</p>
+                    <br>
+                    <p>{{science_article.author}} </p>
+                    <small class="text-muted">{{science_article.publishedAt | amTimeAgo}}</small>
+                </div>
+                <div class="card-action">
+                    <a href="{{science_article.url}}"><i class="fa fa-share" aria-hidden="true"></i> See More</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="divider"></div>
     <h3>Sport</h3>
     <div class="row">
+        <div class="input-field col s12 m6">
+            <select class="icons">
+              <option  *ngFor="let sportOption of sport_sources" value="sportOption.SourceCode"
+              data-icon="sportOption.SourceImageURL" class="left circle">{{sportOption.SourceName}}</option>
+            </select>
+            <label>Select Sport News</label>
+        </div>
         <!-- Dropdown Trigger -->
         <a class='dropdown-button btn' href='#' data-activates='sportDropdown'>Sort By</a>
         <!-- Dropdown Structure -->
