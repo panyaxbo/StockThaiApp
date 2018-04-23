@@ -43,3 +43,5 @@ Thumbs.db
 
 # Build installer
 /stockthai-darwin-x64
+
+package-lock.json
